@@ -1,0 +1,8 @@
+### S. suis Antigen Prevalence – Concise Methods (for duplication section)
+ All complete and near-complete *Streptococcus suis* assemblies in RefSeq (taxid 1307) were downloaded (n = 402). After removing duplicate BioSample IDs and assemblies < 500 kb, 388 genomes (183 serotype-annotated, 205 untyped) were retained; each *fna* file was kept exactly as published.
+
+The 388 sequences were concatenated into *all_suis_genomes.fna* and converted to a nucleotide BLAST database with **makeblastdb** (BLAST+ v2.15.0, `-dbtype nucl -parse_seqids`). Five candidate antigens—HP0197, Fnbp, Sao, C5a-peptidase (ScpB) and Suilysin—and their conserved-domain fragments were compiled in *query_antigens.fasta* and *query_antigens_highlight.fasta*, respectively.
+
+Protein queries were searched against the six-frame-translated database using **tblastn** (`-evalue 1e-5 -outfmt 6 -num_threads $(nproc)`). BLAST hits were filtered at either ≥ 70 % identity & ≥ 80 % coverage (full-length) or ≥ 60 % identity & ≥ 50 % coverage (domain). For each antigen the single highest-scoring HSP per genome was retained, and prevalence was calculated as the proportion of genomes with ≥ 1 qualified hit.
+
+All scripts (SSUIS-SADE v1.0.0), *environment.yml* and a Dockerfile (Ubuntu 22.04) are available on GitHub; the entire analysis reproduces with a single command `bash run_suis_prevalence.sh` once the 388 *fna* files are placed in *suis_selected/*. 

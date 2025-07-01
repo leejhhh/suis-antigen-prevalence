@@ -7,7 +7,7 @@ This script reproduces the complete analysis pipeline used for the
 S. suis antigen prevalence study reported in the accompanying manuscript.
 
 Requirements:
-- BLAST+ (version 2.16.0 or later)
+- BLAST+ (version 2.15.0 or later)
 - Python 3.x with pandas, biopython, numpy
 - Input files: query_antigens.fasta, suis_selected/ directory
 
