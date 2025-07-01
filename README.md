@@ -9,7 +9,7 @@ This repository contains the complete and minimal code required to reproduce the
 |Organism|*Streptococcus suis* (taxid 1307)|
 |Genomes|388 complete / near-complete assemblies (≤ 5 contigs)<sup>†</sup>|
 |Antigens|HP0197 · Fnb · Sao · C5a-peptidase (ScpB) · Suilysin|
-|Filters|identity ≥ 70 % · query-coverage ≥ 80 % · E-value ≤ 1 × 10⁻⁵|
+|Filters|Full-length: identity ≥ 70 % · coverage ≥ 80 %   /   Highlight: ≥ 60 % · 50 % · E-value ≤ 1 × 10⁻⁵|
 |Main tools|BLAST+ 2.15 · Python 3.10 (pandas · Biopython) |
 |Runtime|< 2 min on 8 threads (Intel i7-12700, Ubuntu 22.04)|
 
@@ -73,7 +73,7 @@ Questions? Open an issue or contact <dlwndghk2056@gmail.com>.
 |`CITATION.cff`|Metadata for citation auto-generation|
 
 ## 4 ▪ Reproducing the Manuscript Results
-1. Download the 88 assembly FASTA files listed in **Supplementary Data 1** into `suis_selected/` (or update the path in the config).
+1. Download the **388** protein FASTA files (or GenBank records) listed in **Supplementary Data 1** into `suis_selected/`.
 2. Place `query_antigens.fasta` in the repository root (already present).
 3. Execute `bash run_suis_prevalence.sh` (or run the Python pipeline).
 4. The prevalence table `genomes_with_hit_stats.tsv` and summary report are written to `suis_prevalence_analysis/`.
@@ -88,6 +88,28 @@ The `CITATION.cff` file enables automatic citation on GitHub and other services.
 
 ## 6 ▪ License
 MIT – see `LICENSE` for details. Commercial use is permitted.
+
+## 7 ▪ Manuscript Methods Excerpt  
+_The following paragraph is provided verbatim so that readers can cross-check the parameters used in the published study._
+
+> **Prevalence Analysis of Selected *S. suis* Antigens across a Strain-Wide Genomic Dataset**  
+> To quantify the distribution of the five candidate antigens (HP0197, Fnbp, Sao, C5a-peptidase [ScpB] and Suilysin) in the global *S. suis* population, we implemented a dedicated Python pipeline, **SSUIS-SADE v1.0.0** (Streptococcus suis Antigen Distribution Explorer; GitHub, release v1.0.0).  
+>  
+> **Dataset.**  Complete and near-complete *S. suis* assemblies (taxonomy ID 1307) were downloaded from RefSeq on 1 March 2025 (n = 402). After removing duplicate BioSample IDs and assemblies whose total contig length was < 500 kb, 388 genomes (183 serotype-annotated, 205 untyped) were retained. Corresponding protein FASTA files (*.faa) were extracted from each GenBank record with tbl2asn v25.7.  
+>  
+> **Database construction.**  All 388 proteomes were concatenated into a single file (`all_suis_proteomes.faa`) and indexed with `makeblastdb` (BLAST+ v2.15.0) using `-dbtype prot -parse_seqids`.  
+>  
+> **Antigen queries.**  Reference protein sequences for HP0197 (WP_277937340.1), Fnbp (WP_014636551.1), Sao (WP_211840080.1), ScpB (WP_240208248.1) and Suilysin (AIG43067.1) were compiled in `query_antigens.fasta`.  
+>  
+> **BLAST search.**  Antigen queries were aligned against the proteome database with `blastp`. The search was run with an E-value threshold of 1 × 10⁻⁵ and eight CPU threads (`-outfmt 6 -num_threads 8`).  
+>  
+> **Result parsing and prevalence metrics.**  Tabular output (format 6) was processed with the `parse_prevalence.py` module (pandas 2.2.0, Biopython 1.83). For each antigen, hits were filtered by identity ≥ 70 % and query-coverage ≥ 80 % (full-length) or identity ≥ 60 % and coverage ≥ 50 % (highlight domains). The best HSP per CDS (highest bit-score) was retained, and presence/absence was tallied per genome accession. Prevalence (%) was calculated as (number of genomes with ≥ 1 qualified hit) / 388 × 100. Summary tables and per-genome hit statistics are provided in Supplementary Data 3.  
+>  
+> **Reproducibility.**  All scripts, the `environment.yml`, and a `Dockerfile` (Ubuntu 22.04 base image with BLAST+ and Python dependencies pre-installed) are publicly available in the GitHub release noted above. The entire analysis can be reproduced with:  
+> ```bash
+> docker run --rm -v $(pwd):/work suis-prevalence:1.0 bash run_suis_prevalence.sh
+> ```  
+> requiring only the 388 *.faa* files placed in `suis_selected/`.  
 
 ---
 Questions? Open an issue or contact <dlwndghk2056@gmail.com>. 
