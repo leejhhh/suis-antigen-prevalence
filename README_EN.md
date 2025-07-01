@@ -13,7 +13,6 @@ This repository contains the complete and minimal code required to reproduce the
 |Main tools|BLAST+ 2.15 · Python 3.10 (pandas · Biopython) |
 |Runtime|< 2 min on 8 threads (Intel i7-12700, Ubuntu 22.04)|
 
-† Raw genome FASTA files and pre-built BLAST DB (> 100 MB) are deposited on Zenodo (doi:10.5281/zenodo.XXXXXXX) and are **not** stored in this repository.
 
 ## 2 ▪ Quick Start
 ### 2.1 Run with Docker (zero setup)
@@ -73,4 +72,4 @@ The `CITATION.cff` file enables automatic citation on GitHub and other services.
 MIT – see `LICENSE` for details. Commercial use is permitted.
 
 ---
-Questions? Open an issue or contact <your.email@example.com>. 
+Questions? Open an issue or contact dlwndghk2056@gmail.com
