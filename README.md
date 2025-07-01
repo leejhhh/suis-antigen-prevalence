@@ -33,4 +33,17 @@ bash run_suis_prevalence.sh
 ## 📜 인용 방법
 이 파이프라인을 사용하실 경우 논문과 Zenodo 릴리스를 함께 인용해 주세요. 자세한 BibTeX은 [README_EN.md](./README_EN.md)를 참고하십시오.
 
+<<<<<<< HEAD
 문의: <your.email@example.com> 
+=======
+# Expected: prevalence 100 % with 3 genomes listed
+```
+
+Pytest will run the same check automatically:
+
+```bash
+pytest -q
+```
+
+문의: dlwndghk2056@gmail.com
+>>>>>>> 52ac12ad80877fc111f3cdf9174fdaf792666ba1
