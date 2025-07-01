@@ -1,0 +1,6 @@
+antigen	hit_genomes	total_genomes	prevalence_%	vaccine_coverage	max_identity	mean_identity	mean_coverage
+C5a|WP_240208248.1	349	388	89.95	🟢 High	99.8	97.8	100.1
+Fnb|WP_014636551.1	96	388	24.74	🔴 Low	92.0	83.6	100.4
+HP0197|WP_277937340.1	0	388	0.0	🔴 Low	0.0	0.0	0.0
+SAO|WP_211840080.1	265	388	68.3	🟡 Medium	100.0	96.1	100.2
+Suilysin|AIG43067.1	196	388	50.52	🟡 Medium	99.8	99.8	100.0
