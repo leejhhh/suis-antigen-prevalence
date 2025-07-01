@@ -28,13 +28,13 @@ bash run_suis_prevalence.sh
 실행 결과는 `suis_prevalence_analysis/` 폴더에 저장됩니다.
 
 ## 🗂️ 대용량 데이터
-실제 88개 genome FASTA, BLAST 데이터베이스 등(>100 MB)은 GitHub에 포함되지 않았습니다. Zenodo 아카이브(doi:10.5281/zenodo.XXXXXXX)에서 받으실 수 있습니다.
+실제 88개 genome FASTA, BLAST 데이터베이스 등(>100 MB)은 GitHub에 포함되지 않았습니다. 
 
 ## 📜 인용 방법
 이 파이프라인을 사용하실 경우 논문과 Zenodo 릴리스를 함께 인용해 주세요. 자세한 BibTeX은 [README_EN.md](./README_EN.md)를 참고하십시오.
 
 <<<<<<< HEAD
-문의: <your.email@example.com> 
+문의: dlwndghk2056@gmail.com
 =======
 # Expected: prevalence 100 % with 3 genomes listed
 ```
