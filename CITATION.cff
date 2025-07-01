@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+authors:
+  - family-names: Your
+    given-names: Name
+    orcid: https://orcid.org/0000-0000-0000-0000
+title: "S. suis five-antigen prevalence analysis pipeline"
+version: "1.0.0"
+date-released: 2025-05-26
+url: https://github.com/yourname/suis-antigen-prevalence
+license: MIT
+doi: 10.5281/zenodo.xxxxxxx
+message: "If you use this software, please cite it using the metadata provided here." 

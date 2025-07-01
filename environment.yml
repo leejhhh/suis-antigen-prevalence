@@ -1,0 +1,10 @@
+name: suis_env
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - pandas=1.5.3
+  - biopython=1.83
+  - blast=2.15.0
+  - pip

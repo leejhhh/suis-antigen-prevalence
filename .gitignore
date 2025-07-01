@@ -1,0 +1,8 @@
+# Large raw genomes (handled externally)
+*.fna
+suis_selected/
+*.gz
+*.zip
+*.tar
+*.tar.gz
+*.tgz
