@@ -74,4 +74,4 @@ Pytest will run the same check automatically:
 pytest -q
 ```
 
-문의: your.email@example.com 
+문의: dlwndghk2056@gmail.com@gmail.com 
