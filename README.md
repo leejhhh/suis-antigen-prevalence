@@ -101,6 +101,7 @@ _The following paragraph is provided verbatim so that readers can cross-check th
 > **BLAST database construction.** All 388 genomic sequences were concatenated into a single file (`all_suis_genomes.fna`) and indexed with `makeblastdb` (BLAST+ v2.15.0) [ref&nbsp;1, 2] using `-dbtype nucl -parse_seqids`.  
 >  
 > **Antigen query set.** Representative sequences—HP0197 (WP_277937340.1), Fnbp (WP_014636551.1), Sao (WP_211840080.1), ScpB (WP_240208248.1), Suilysin (AIG43067.1)—were compiled in `query_antigens.fasta`.  
+> Conserved-domain (“highlight”) fragments of the same antigens were additionally compiled in `query_antigens_highlight.fasta` for sensitivity analysis.
 >  
 > **tBLASTn search.** Protein queries were aligned against the six-frame-translated genome database with `tblastn` [ref&nbsp;1, 2] (*E*-value ≤ 1 × 10⁻⁵, eight threads, `-outfmt 6`).  
 >  

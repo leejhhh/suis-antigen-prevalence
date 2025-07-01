@@ -6,7 +6,8 @@ To quantify the distribution of the five candidate antigens—HP0197, Fnbp, Sao,
 
 **Database construction.** All 388 genomic sequences were concatenated into a single file (`all_suis_genomes.fna`) and indexed with `makeblastdb` (BLAST+ v2.15.0) [1, 2] using `-dbtype nucl -parse_seqids`.
 
-**Antigen queries.** Reference protein sequences for HP0197 (WP_277937340.1), Fnbp (WP_014636551.1), Sao (WP_211840080.1), ScpB (WP_240208248.1) and Suilysin (AIG43067.1) were compiled in `query_antigens.fasta`.
+**Antigen queries.** Reference protein sequences for HP0197 (WP_277937340.1), Fnbp (WP_014636551.1), Sao (WP_211840080.1), ScpB (WP_240208248.1) and Suilysin (AIG43067.1) were compiled in `query_antigens.fasta`.  
+Conserved-domain ("highlight") fragments of the same antigens were also collated in `query_antigens_highlight.fasta` for sensitivity analysis.
 
 **tBLASTn search.** Protein queries were aligned against the six-frame-translated genome database with `tblastn` [1, 2]. Searches used an *E*-value threshold of 1 × 10⁻⁵ and eight CPU threads (`-outfmt 6 -num_threads 8`).
 
