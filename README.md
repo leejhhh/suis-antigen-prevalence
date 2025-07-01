@@ -93,26 +93,28 @@ MIT – see `LICENSE` for details. Commercial use is permitted.
 ## 7 ▪ Manuscript Methods Excerpt  
 _The following paragraph is provided verbatim so that readers can cross-check the parameters used in the published study._
 
-> **Prevalence Analysis of Selected *S. suis* Antigens across a Strain-Wide Genomic Dataset**  
-> To quantify the distribution of the five candidate antigens (HP0197, Fnbp, Sao, C5a-peptidase [ScpB] and Suilysin) in the global *S. suis* population, we implemented a dedicated Python pipeline, **SSUIS-SADE v1.0.0** (Streptococcus suis Antigen Distribution Explorer; GitHub, release v1.0.0).  
->  
-> **Dataset curation.** Complete and near-complete *S. suis* assemblies (taxonomy ID 1307) were downloaded from RefSeq on 1 March 2025 (n = 402). After removing duplicate BioSample IDs and assemblies whose total contig length was < 500 kb, 388 genomes (183 serotype-annotated, 205 untyped) were retained. Each genomic FASTA (*.fna*) record was kept as published; no CDS extraction was performed.  
->  
-> **BLAST database construction.** All 388 genomic sequences were concatenated into a single file (`all_suis_genomes.fna`) and indexed with `makeblastdb` (BLAST+ v2.15.0) [ref&nbsp;1, 2] using `-dbtype nucl -parse_seqids`.  
->  
-> **Antigen query set.** Representative sequences—HP0197 (WP_277937340.1), Fnbp (WP_014636551.1), Sao (WP_211840080.1), ScpB (WP_240208248.1), Suilysin (AIG43067.1)—were compiled in `query_antigens.fasta`.  
-> Conserved-domain (“highlight”) fragments of the same antigens were additionally compiled in `query_antigens_highlight.fasta` for sensitivity analysis.
->  
-> **tBLASTn search.** Protein queries were aligned against the six-frame-translated genome database with `tblastn` [ref&nbsp;1, 2] (*E*-value ≤ 1 × 10⁻⁵, eight threads, `-outfmt 6`).  
->  
-> **Hit filtering & prevalence metrics.** Tabular output was parsed with `parse_prevalence.py` (pandas 2.2.0 [ref 3, 4]; Biopython 1.83 [ref 5]). High-confidence (full-length) homologues were defined as hits ≥ 70 % identity **and** ≥ 80 % coverage; conserved-domain (“highlight”) hits used ≥ 60 % identity **and** ≥ 50 % coverage [ref 6]. Only the top-scoring HSP per CDS was retained. Prevalence was computed as qualified genomes / 388 × 100. Full-length and highlight results are supplied in *Supplementary Data 3* (`highlight_prevalence_stats.tsv`).  
->  
-> **Reproducibility.** The full workflow (**SSUIS-SADE&nbsp;v1.0.0** – <https://github.com/yourname/suis-antigen-prevalence>, Zenodo DOI 10.5281/zenodo.xxxxxxx) ships with `environment.yml` and a Dockerfile (Ubuntu 22.04). Execute:  
+> **Prevalence Analysis of Selected *Streptococcus suis* Antigens**  
+> To quantify the prevalence of five candidate antigens (HP0197, Fnbp, Sao, C5a-peptidase, and Suilysin) within a diverse genomic dataset of *S. suis*, we developed a dedicated bioinformatic pipeline, **SSUIS-SADE v1.0.0** (Streptococcus suis Antigen Distribution Explorer).  
+>   
+> **Dataset curation and assembly.** A comprehensive set of *S. suis* assemblies (taxonomy ID 1307) was downloaded from RefSeq on 1 March 2025 (n = 402). After removing duplicate BioSample IDs and assemblies with a total contig length < 500 kb, 388 genomes (183 serotype-annotated, 205 untyped) remained. The genomic FASTA (*.fna*) records were used as published without further modification.  
+>   
+> **Sequence database and antigen queries.** The 388 genomic FASTA sequences were concatenated into `all_suis_genomes.fna` and indexed with `makeblastdb` (BLAST+ v2.15.0) [1, 2]. Reference protein sequences for the five full-length antigens were compiled into `query_antigens.fasta`. For a parallel sensitivity analysis, conserved-domain (“highlight”) fragments were compiled into `query_antigens_highlight.fasta`.  
+>   
+> **Homology search and prevalence metrics.** Protein queries were aligned against the six-frame-translated genome database using `tblastn` (*E*-value ≤ 1 × 10⁻⁵, multi-threaded). Tabular output (format 6) was processed with `parse_prevalence.py` leveraging pandas [3, 4] and Biopython [5]. A genome was considered positive when at least one hit met predefined criteria: full-length ≥ 70 % identity **and** ≥ 80 % coverage; highlight ≥ 60 % identity **and** ≥ 50 % coverage, consistent with previous streptococcal studies [6]. Antigen prevalence was computed as positive genomes / 388 × 100.  
+>   
+> **Computational reproducibility.** All custom scripts, the Conda environment specification (`environment.yml`), and a Dockerfile (Ubuntu 22.04, BLAST+, Python) are publicly available in the GitHub repository (release v1.0.0). The complete analysis can be executed in one command:  
 > ```bash
 > docker run --rm -v $(pwd):/work suis-prevalence:1.0 \
 >     bash run_suis_prevalence.sh
 > ```  
-> requiring only the 388 *.fna* files in `suis_selected/`.
+>   
+> ### References  
+> 1. Altschul SF, Gish W, Miller W, Myers EW, Lipman DJ. Basic local alignment search tool. *J Mol Biol.* 1990;215:403-410.  
+> 2. Camacho C, Coulouris G, Avagyan V, *et al.* BLAST+: architecture and applications. *BMC Bioinformatics.* 2009;10:421.  
+> 3. The pandas development team. *pandas-dev/pandas: Pandas (software).* Zenodo; 2020.  
+> 4. McKinney W. Data structures for statistical computing in Python. In: *Proceedings of the 9th Python in Science Conference.* 2010:56-61.  
+> 5. Cock PJA, Antao T, Chang JT, *et al.* Biopython: freely available Python tools for computational molecular biology and bioinformatics. *Bioinformatics.* 2009;25:1422-1423.  
+> 6. Estrada AA, Gottschalk M, Gebhart C, *et al.* Comparative analysis of *Streptococcus suis* genomes identifies novel candidate virulence-associated genes in North American isolates. *Vet Res.* 2022;53:23. https://doi.org/10.1186/s13567-022-01039-8
 
 ---
 Questions? Open an issue or contact <dlwndghk2056@gmail.com>. 
