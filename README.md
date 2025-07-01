@@ -103,7 +103,7 @@ _The following paragraph is provided verbatim so that readers can cross-check th
 >  
 > **BLAST search.**  Antigen queries were aligned against the proteome database with `blastp`. The search was run with an E-value threshold of 1 × 10⁻⁵ and eight CPU threads (`-outfmt 6 -num_threads 8`).  
 >  
-> **Result parsing and prevalence metrics.**  Tabular output (format 6) was processed with the `parse_prevalence.py` module (pandas 2.2.0, Biopython 1.83). For each antigen, hits were filtered by identity ≥ 70 % and query-coverage ≥ 80 % (full-length) or identity ≥ 60 % and coverage ≥ 50 % (highlight domains). The best HSP per CDS (highest bit-score) was retained, and presence/absence was tallied per genome accession. Prevalence (%) was calculated as (number of genomes with ≥ 1 qualified hit) / 388 × 100. Summary tables and per-genome hit statistics are provided in Supplementary Data 3.  
+> **Result parsing and prevalence metrics.**  Tabular output (format 6) was processed with the `parse_prevalence.py` module (pandas 2.2.0, Biopython 1.83). For each antigen, hits were filtered by identity ≥ 70 % and query-coverage ≥ 80 % (for full-length) or by identity ≥ 60 % and coverage ≥ 50 % (for highlight domains). The best HSP per CDS (highest bit-score) was retained, and presence/absence was tallied per genome accession. Prevalence (%) was calculated as (number of genomes with ≥ 1 qualified hit) / 388 × 100. Summary tables and per-genome hit statistics are provided in Supplementary Data 3.  
 >  
 > **Reproducibility.**  All scripts, the `environment.yml`, and a `Dockerfile` (Ubuntu 22.04 base image with BLAST+ and Python dependencies pre-installed) are publicly available in the GitHub release noted above. The entire analysis can be reproduced with:  
 > ```bash
