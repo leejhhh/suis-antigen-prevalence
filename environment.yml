@@ -4,7 +4,7 @@ channels:
   - bioconda
 dependencies:
   - python=3.10
-  - pandas=1.5.3
+  - pandas=2.2.0
   - biopython=1.83
   - blast=2.15.0
   - pip

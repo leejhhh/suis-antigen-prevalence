@@ -4,7 +4,7 @@
 
 ## 📊 프로젝트 개요
 
-**목표**: 5개의 주요 S. suis 항원이 Complete genome + 5개 이하 contig를 가진 88개 고품질 genome에서 얼마나 분포하고 있는지 %로 분석
+**목표**: 5개의 주요 S. suis 항원이 Complete genome + contig ≤ 5 조건을 만족하는 **388개** 고품질 genome에서 얼마나 분포하고 있는지 %로 분석
 
 **분석 대상 항원**:
 - HP0197 (WP_277937340.1)
@@ -14,18 +14,18 @@
 - Suilysin (AIG43067.1)
 
 **분석 기준**:
-- Identity ≥ 70%
-- Coverage ≥ 80%
-- E-value ≤ 1e-5
+- Full-length 서열 : Identity ≥ 70 % · Coverage ≥ 80 %
+- Highlight 도메인 : Identity ≥ 60 % · Coverage ≥ 50 %
+- E-value ≤ 1 × 10⁻⁵
 
 ## 📁 프로젝트 구조
 
 1.  **데이터 준비 (완료):**
     *   NCBI Datasets에서 S. suis 메타데이터 수집
-    *   88개 고품질 조립체 선별 (Complete Genome + contig ≤ 5)
+    *   **388개** 고품질 조립체 선별 (Complete Genome + contig ≤ 5)
     *   Genome 조립체 (`.fna` 파일) 다운로드 완료
 2.  **분석 파이프라인:**
-    *   88개 `.fna` 파일을 단일 FASTA로 병합 (`all_suis_genomes.fna`)
+    *   **388개** `.fna` 파일을 단일 FASTA로 병합 (`all_suis_genomes.fna`)
     *   BLAST 데이터베이스 생성
     *   `query_antigens.fasta`를 이용한 `tblastn` 검색
     *   `parse_prevalence_by_antigen.py`로 항원별 분포율 계산
@@ -45,11 +45,11 @@ bash run_antigen_analysis.sh
 ### 개별 스크립트 실행
 
 ```bash
-# 기본 prevalence 분석
+# 기본 prevalence 분석 (full-length 기준)
 bash run_suis_prevalence.sh
 
-# 항원별 상세 분석
-bash run_antigen_analysis.sh
+# Highlight 도메인 분석
+python analyze_highlight_sequences.py
 ```
 
 ## 📂 파일 구조
@@ -59,9 +59,10 @@ offline_bundle/
 ├─ Miniconda3-latest-Linux-x86_64.sh  # Miniconda installer for Linux
 ├─ ncbi-blast-2.15.0+-x64-linux.tar.gz # BLAST+ binaries for Linux
 ├─ datasets-linux-amd64              # NCBI Datasets CLI executable for Linux
-├─ run_suis_prevalence.sh            # Main execution script
-├─ parse_prevalence.py               # Python script for parsing BLAST results
-├─ query_antigens.fasta              # FASTA file with 5 query antigen sequences
+├─ run_suis_prevalence.sh            # Full-length analysis pipeline
+├─ analyze_highlight_sequences.py    # Conserved-domain (highlight) analysis
+├─ parse_prevalence.py               # BLAST result parser
+├─ query_antigens.fasta              # 5 full-length antigen sequences
 └─ suis_selected/                    # Directory containing 388 .fna genome files
     ├─ GCF_000000001.1.fna
     └─ ... (all 388 files)

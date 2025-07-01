@@ -46,7 +46,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl && \
 
 # --- Create Conda Environment ---
 # Create environment with specified Python packages
-RUN conda create -y -n suis_env python=3.10 pandas biopython && \
+RUN conda create -y -n suis_env python=3.10 pandas=2.2.0 biopython=1.83 && \
     conda clean -afy
 
 # Activate conda environment
